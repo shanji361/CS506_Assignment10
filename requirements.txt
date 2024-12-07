@@ -1,0 +1,6 @@
+flask
+torch
+torchvision
+open_clip
+scikit-learn
+Pillow

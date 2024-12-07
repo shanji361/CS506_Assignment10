@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Multimodal Image Search</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+    <h1>Image Search</h1>
+    
+    <form>
+        <div class="form-group">
+            <label for="text-query">Text Query (Optional):</label>
+            <input type="text" id="text-query" name="text_query" placeholder="Enter a text description">
+        </div>
+
+        <div class="form-group">
+            <label for="image-query">Upload Image (Optional):</label>
+            <input type="file" id="image-query" name="image_query" accept="image/*">
+        </div>
+
+        <div class="form-group">
+            <label for="lambda">Weight of Text Query (0.0 to 1.0):</label>
+            <input type="range" id="lambda" name="lambda" min="0" max="1" step="0.1" value="0.5">
+            <div id="lambda-display" class="weight-display">Text Query Weight: 0.5</div>
+        </div>
+
+        <div class="form-group">
+            <label for="embedding-choice">Embedding Option:</label>
+            <select id="embedding-choice" name="embedding_choice">
+                <option value="clip" selected>CLIP Embeddings</option>
+                <option value="pca">PCA Embeddings</option>
+            </select>
+        </div>
+
+        <div id="pca-k-group" class="form-group" style="display: none;">
+            <label for="pca-k">Number of Principal Components (k):</label>
+            <input type="number" id="pca-k" name="pca_k" min="10" max="200" value="50">
+        </div>
+
+        <button type="submit">Search</button>
+    </form>
+
+    <div id="results">
+        <h2>Results:</h2>
+        <div id="result-list"></div>
+    </div>
+
+    <script src="/static/script.js"></script>
+</body>
+</html>
